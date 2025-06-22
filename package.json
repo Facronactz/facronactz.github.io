@@ -1,8 +1,13 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "facronactz-landing-page",
+  "version": "1.1.0",
+  "description": "A beautiful, modern, and responsive landing page template built with Next.js, Tailwind CSS, and Radix UI.",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
+    "install": "npm install --legacy-peer-deps",
     "build": "next build",
     "dev": "next dev --turbopack",
     "lint": "next lint",
