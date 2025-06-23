@@ -3,7 +3,7 @@
 import {lazy, Suspense, useEffect, useRef, useState} from "react"
 import {Moon, Palette, Settings, Sun} from "lucide-react"
 import {colorThemes} from "@/data/theme"
-import PageGrid from "@/components/page-grid";
+import PageGrid from "@/components/page-grid-old";
 
 // const PageGrid = lazy(() => import("../components/page-grid-old"))
 
