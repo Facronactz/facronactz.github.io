@@ -3,7 +3,7 @@
 import {lazy, Suspense, useEffect, useRef, useState} from "react"
 import {Moon, Palette, Settings, Sun} from "lucide-react"
 import {colorThemes} from "@/data/theme"
-import PageGrid from "@/components/page-grid";
+import PageGrid from "@/components/page-grid-old";
 
 // const PageGrid = lazy(() => import("../components/page-grid-old"))
 
@@ -108,7 +108,7 @@ export default function PortfolioIntro() {
     return (
         <div
             className={`transition-all duration-500 ease-in-out ${isTransitioning ? "opacity-50 scale-95" : "opacity-100 scale-100"} 
-        ${currentPage ? "min-h-screen" : "h-screen lg:h-screen"} overflow-hidden`}
+        ${currentPage ? "min-h-screen" : "h-screen lg:h-screen"} overflow-x-hidden overflow-y-scroll md:overflow-hidden`}
         >
             <div
                 className={`bg-gradient-to-br ${currentTheme.bg[theme.mode]} ${currentTheme.text[theme.mode]} relative transition-all duration-700
