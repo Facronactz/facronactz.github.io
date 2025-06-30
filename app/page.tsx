@@ -108,11 +108,10 @@ export default function PortfolioIntro() {
     return (
         <div
             className={`transition-all duration-500 ease-in-out ${isTransitioning ? "opacity-50 scale-95" : "opacity-100 scale-100"} 
-        ${currentPage ? "min-h-screen" : "h-screen lg:h-screen"} overflow-x-hidden overflow-y-scroll md:overflow-hidden`}
+        ${currentPage ? "min-h-screen" : "h-screen lg:overflow-hidden"} overflow-x-hidden overflow-y-scroll`}
         >
             <div
-                className={`bg-gradient-to-br ${currentTheme.bg[theme.mode]} ${currentTheme.text[theme.mode]} relative transition-all duration-700
-          ${currentPage ? "min-h-screen" : "lg:h-full min-h-screen"}`}
+                className={`bg-gradient-to-br ${currentTheme.bg[theme.mode]} ${currentTheme.text[theme.mode]} relative transition-all duration-700 min-h-screen overflow-auto overflow-x-hidden`}
             >
                 {/* Enhanced Background Elements */}
                 <div className="absolute inset-0 opacity-30">
@@ -237,37 +236,38 @@ export default function PortfolioIntro() {
 
                 {/* Main Content Container with Page Transitions */}
                 <div
-                    className={`relative z-10 w-full max-w-6xl mx-auto px-6 
-            ${currentPage ? "py-6 min-h-screen" : "h-full flex flex-col lg:justify-center py-6 lg:py-0"}
-            ${pageTransition ? "page-transition-exit-active" : "page-transition-enter-active"}`}
+                    className={`relative z-10 w-full h-screen max-w-6xl mx-auto px-6 
+            ${currentPage ? "pt-6" : "pt-8 2xl:pt-12"} 
+            ${pageTransition ? "page-transition-exit-active" : "page-transition-enter-active"}
+            flex flex-col`}
                 >
                     {/* Enhanced Header */}
-                    <div className={`text-center ${currentPage ? "mb-8" : "mb-8 lg:mb-16"} mt-8 header-animate`}>
+                    <div className={`${currentPage ? "mb-8" : "mb-0"} header-animate lg:text-center`}>
                         <div
-                            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${currentTheme.card[theme.mode]} backdrop-blur-sm mb-6 lg:mb-8 border enhanced-button`}
+                            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm mb-6 2xl:mb-8 border enhanced-button ${currentTheme.card[theme.mode]}`}
                         >
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                             <span className={`text-sm ${currentTheme.textSecondary[theme.mode]}`}>Available for opportunities</span>
                         </div>
 
-                        <div className="relative">
+                        <div className="relative text-center">
                             <div
-                                className={`absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-${theme.colorTheme}-400 to-transparent`}
+                                className={`absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent ${currentTheme.gradients.divider[theme.mode]} to-transparent`}
                             ></div>
                             <div
-                                className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent via-${theme.colorTheme === "blue" ? "cyan" : theme.colorTheme === "purple" ? "pink" : theme.colorTheme === "green" ? "emerald" : "red"}-400 to-transparent`}
+                                className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent ${currentTheme.gradients.accent[theme.mode]} to-transparent`}
                             ></div>
 
                             <h1
-                                className={`${currentPage ? "text-3xl md:text-5xl" : "text-4xl md:text-6xl lg:text-7xl"} font-bold mb-4 lg:mb-6 bg-gradient-to-r ${theme.mode === "dark" ? "from-white via-slate-200 to-slate-400" : "from-slate-900 via-slate-700 to-slate-500"} bg-clip-text text-transparent`}
+                                className={`${currentPage ? "text-3xl lg:text-4xl 2xl:text-5xl" : "text-3xl lg:text-5xl 2xl:text-7xl"} font-bold mb-4 2xl:mb-6 bg-clip-text text-transparent bg-gradient-to-r ${currentTheme.gradients.text[theme.mode]}`}
                             >
                                 Farro Axza Febsinatra Sofi'ie
                             </h1>
                         </div>
 
-                        <div className={`${currentPage ? "h-6" : "h-6 lg:h-8"} mb-6 lg:mb-8`}>
+                        <div className={`${currentPage ? "h-6" : "h-6 2xl:h-8"} text-center`}>
                             <p
-                                className={`${currentPage ? "text-base md:text-lg" : "text-lg md:text-xl lg:text-2xl"} ${currentTheme.textSecondary[theme.mode]} role-text`}
+                                className={`${currentPage ? "text-base lg:text-lg" : "text-lg lg:text-xl 2xl:text-2xl"} ${currentTheme.textSecondary[theme.mode]} role-text`}
                             >
                                 {roles[currentRole]}
                             </p>
@@ -276,38 +276,41 @@ export default function PortfolioIntro() {
 
                     {/* Homepage Layout */}
                     {!currentPage && (
-                        <div className="flex flex-col items-center justify-center flex-1 lg:min-h-0">
-                            <PageGrid
-                                onNavigate={handleNavigate}
-                                onExternalLink={handleExternalLink}
-                                currentTheme={currentTheme}
-                                theme={theme}
-                            />
+                        <div className="flex flex-col items-center flex-1">
+                            <div className="my-6">
+                                <PageGrid
+                                    onNavigate={handleNavigate}
+                                    onExternalLink={handleExternalLink}
+                                    currentTheme={currentTheme}
+                                    theme={theme}
+                                />
+                            </div>
 
                             {/* Enhanced Stats */}
-                            <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-8 lg:mb-16">
+                            <div className="flex flex-wrap justify-center gap-6 2xl:gap-8 my-auto">
                                 <div className="text-center stat-counter">
                                     <div
-                                        className={`text-2xl lg:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>5+
+                                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>5+
                                     </div>
-                                    <div className={`text-xs lg:text-sm ${currentTheme.textMuted[theme.mode]}`}>Projects
+                                    <div
+                                        className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Projects
                                         Completed
                                     </div>
                                 </div>
                                 <div className="text-center stat-counter" style={{animationDelay: "0.2s"}}>
                                     <div
-                                        className={`text-2xl lg:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>50+
+                                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>50+
                                     </div>
                                     <div
-                                        className={`text-xs lg:text-sm ${currentTheme.textMuted[theme.mode]}`}>Certificates
+                                        className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Certificates
                                         Earned
                                     </div>
                                 </div>
                                 <div className="text-center stat-counter" style={{animationDelay: "0.4s"}}>
                                     <div
-                                        className={`text-2xl lg:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>100+
+                                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>100+
                                     </div>
-                                    <div className={`text-xs lg:text-sm ${currentTheme.textMuted[theme.mode]}`}>Tools
+                                    <div className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Tools
                                         Mastered
                                     </div>
                                 </div>
@@ -347,34 +350,35 @@ export default function PortfolioIntro() {
                     )}
 
                     {/* Enhanced Footer */}
-                    <footer className={`w-full ${currentPage ? "mt-8" : "mt-auto lg:mt-8"} pb-4 lg:pb-6`}>
+                    <footer className={`w-full ${currentPage ? "mt-4" : "mt-auto"} 2xl:pb-6`}>
                         <div className="max-w-4xl mx-auto">
                             <div
-                                className={`border-t ${theme.mode === "dark" ? "border-slate-700/30" : "border-slate-300/30"} pt-6 lg:pt-8`}
+                                className={`border-t ${theme.mode === "dark" ? "border-slate-700/30" : "border00/30"} 2xl:pt-6`}
                             >
-                                <div className="flex flex-col md:flex-row items-center justify-between gap-4 lg:gap-6">
-                                    <div className="text-center md:text-left">
-                                        <h3 className={`text-base lg:text-lg font-semibold ${currentTheme.text[theme.mode]} mb-1 lg:mb-2`}>
+                                <div
+                                    className="flex flex-col lg:flex-row items-center justify-between gap-4 2xl:gap-6 my-4">
+                                    <div className="text-center lg:text-left">
+                                        <h3 className={`text-base 2xl:text-lg font-semibold ${currentTheme.text[theme.mode]} mb-1 2xl:mb-2`}>
                                             Farro Axza Febsinatra Sofi'ie
                                         </h3>
-                                        <p className={`text-xs lg:text-sm ${currentTheme.textMuted[theme.mode]}`}>
+                                        <p className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>
                                             Full Stack Developer & Tech Innovator
                                         </p>
                                     </div>
 
-                                    <div className="flex flex-col sm:flex-row items-center gap-3 lg:gap-4">
+                                    <div className="flex flex-col sm:flex-row items-center gap-3 2xl:gap-4">
                                         <a
                                             href="mailto:facronactz@example.com"
-                                            className={`text-xs lg:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
+                                            className={`text-xs 2xl:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
                                         >
                                             facronactz@example.com
                                         </a>
-                                        <div className="flex items-center gap-3 lg:gap-4">
+                                        <div className="flex items-center gap-3 2xl:gap-4">
                                             <a
                                                 href="https://linkedin.com/in/facronactzon"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className={`text-xs lg:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
+                                                className={`text-xs 2xl:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
                                                 aria-label="LinkedIn Profile"
                                             >
                                                 LinkedIn
@@ -383,7 +387,7 @@ export default function PortfolioIntro() {
                                                 href="https://github.com/facronactzon"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className={`text-xs lg:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
+                                                className={`text-xs 2xl:text-sm ${currentTheme.textSecondary[theme.mode]} hover:${currentTheme.text[theme.mode]} transition-all duration-300 hover:scale-105`}
                                                 aria-label="GitHub Profile"
                                             >
                                                 GitHub
@@ -392,7 +396,7 @@ export default function PortfolioIntro() {
                                     </div>
                                 </div>
 
-                                <div className="mt-4 lg:mt-6 pt-4 lg:pt-6 border-t border-slate-700/20 text-center">
+                                <div className="py-2 2xl:mt-6 2xl:pt-6 border-t border-slate-700/20 text-center">
                                     <p className={`text-xs ${currentTheme.textMuted[theme.mode]}`}>
                                         © 2025 • Farro Axza Febsinatra Sofi'ie • All rights reserved •
                                         <button
