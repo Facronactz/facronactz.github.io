@@ -7,6 +7,20 @@ export const colorThemes = {
         text: {dark: "text-white", light: "text-slate-900"},
         textSecondary: {dark: "text-slate-300", light: "text-slate-600"},
         textMuted: {dark: "text-slate-400", light: "text-slate-500"},
+        gradients: {
+            divider: {
+                dark: "via-blue-400",
+                light: "via-blue-500"
+            },
+            accent: {
+                dark: "via-cyan-400",
+                light: "via-blue-500"
+            },
+            text: {
+                dark: "from-white via-slate-200 to-slate-400",
+                light: "from-slate-900 via-slate-700 to-slate-500"
+            }
+        }
     },
     purple: {
         primary: {dark: "from-purple-600 to-pink-600", light: "from-purple-500 to-pink-500"},
@@ -16,6 +30,20 @@ export const colorThemes = {
         text: {dark: "text-white", light: "text-slate-900"},
         textSecondary: {dark: "text-slate-300", light: "text-slate-600"},
         textMuted: {dark: "text-slate-400", light: "text-slate-500"},
+        gradients: {
+            divider: {
+                dark: "via-purple-400",
+                light: "via-purple-500"
+            },
+            accent: {
+                dark: "via-pink-400",
+                light: "via-purple-500"
+            },
+            text: {
+                dark: "from-white via-slate-200 to-slate-400",
+                light: "from-slate-900 via-slate-700 to-slate-500"
+            }
+        }
     },
     green: {
         primary: {dark: "from-green-600 to-emerald-600", light: "from-green-500 to-emerald-500"},
@@ -25,6 +53,20 @@ export const colorThemes = {
         text: {dark: "text-white", light: "text-slate-900"},
         textSecondary: {dark: "text-slate-300", light: "text-slate-600"},
         textMuted: {dark: "text-slate-400", light: "text-slate-500"},
+        gradients: {
+            divider: {
+                dark: "via-green-400",
+                light: "via-green-500"
+            },
+            accent: {
+                dark: "via-emerald-400",
+                light: "via-green-500"
+            },
+            text: {
+                dark: "from-white via-slate-200 to-slate-400",
+                light: "from-slate-900 via-slate-700 to-slate-500"
+            }
+        }
     },
     orange: {
         primary: {dark: "from-orange-600 to-red-600", light: "from-orange-500 to-red-500"},
@@ -34,5 +76,19 @@ export const colorThemes = {
         text: {dark: "text-white", light: "text-slate-900"},
         textSecondary: {dark: "text-slate-300", light: "text-slate-600"},
         textMuted: {dark: "text-slate-400", light: "text-slate-500"},
+        gradients: {
+            divider: {
+                dark: "via-orange-400",
+                light: "via-orange-500"
+            },
+            accent: {
+                dark: "via-red-400",
+                light: "via-orange-500"
+            },
+            text: {
+                dark: "from-white via-slate-200 to-slate-400",
+                light: "from-slate-900 via-slate-700 to-slate-500"
+            }
+        }
     },
 }
