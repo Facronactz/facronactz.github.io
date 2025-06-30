@@ -21,6 +21,7 @@ const navigationItems = [
         borderColor: "border-blue-500/20",
         iconColor: "text-blue-400",
         type: "internal" as const,
+        hover: "group-hover:text-blue-400",
     },
     {
         id: "experiences",
@@ -32,6 +33,7 @@ const navigationItems = [
         borderColor: "border-purple-500/20",
         iconColor: "text-purple-400",
         type: "internal" as const,
+        hover: "group-hover:text-purple-400",
     },
     {
         id: "projects",
@@ -43,6 +45,7 @@ const navigationItems = [
         borderColor: "border-green-500/20",
         iconColor: "text-green-400",
         type: "internal" as const,
+        hover: "group-hover:text-green-400",
     },
     {
         id: "certificates",
@@ -54,6 +57,7 @@ const navigationItems = [
         borderColor: "border-orange-500/20",
         iconColor: "text-orange-400",
         type: "internal" as const,
+        hover: "group-hover:text-orange-400",
     },
     {
         id: "online-profiles",
@@ -65,6 +69,7 @@ const navigationItems = [
         borderColor: "border-cyan-500/20",
         iconColor: "text-cyan-400",
         type: "internal" as const,
+        hover: "group-hover:text-cyan-400",
     },
     {
         id: "resume",
@@ -76,7 +81,8 @@ const navigationItems = [
         borderColor: "border-indigo-500/20",
         iconColor: "text-indigo-400",
         type: "external" as const,
-        url: "https://your-resume-website.com/cv.pdf",
+        url: "https://facronactz.vercel.app/",
+        hover: "group-hover:text-indigo-400",
     },
 ]
 
@@ -105,7 +111,7 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
 
     return (
         <section className="w-full max-w-5xl" aria-label="Portfolio Navigation">
-            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                 {navigationItems.map((item, index) => {
                     const Icon = item.icon
                     return (
@@ -135,7 +141,7 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
                         >
                             {/* External Link Indicator */}
                             {item.type === "external" && (
-                                <div className="absolute bottom-5 right-7 z-20">
+                                <div className="absolute bottom-5 right-5 z-20">
                                     <ExternalLink
                                         className={`w-4 h-4 ${item.iconColor} opacity-50 group-hover:opacity-100 transition-all duration-300`}
                                         aria-hidden="true"
@@ -154,9 +160,10 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
                             ></div>
 
                             {/* Main Content Container */}
-                            <div className="relative p-8 z-10 h-full flex flex-col">
+                            <div
+                                className="relative p-8 z-10 h-full flex flex-wrap 2xl:flex-nowrap 2xl:flex-col justify-center items-center 2xl:items-start">
                                 {/* Header Section */}
-                                <div className="flex items-start justify-between mb-6">
+                                <div className="flex items-start justify-between basis-1/3 2xl:basis-full 2xl:w-full">
                                     <div
                                         className={`p-4 rounded-2xl bg-gradient-to-br ${item.bgGradient} border ${item.borderColor} group-hover:scale-110 transition-all duration-300 will-change-transform shadow-sm`}
                                     >
@@ -165,7 +172,7 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
                                             aria-hidden="true"
                                         />
                                     </div>
-                                    <div className="text-right">
+                                    <div className="text-right hidden 2xl:block">
                                         <div
                                             className={`text-xs font-medium ${currentTheme.textMuted[theme.mode]} opacity-60 group-hover:opacity-100 transition-opacity duration-300 tracking-wider`}
                                         >
@@ -175,76 +182,83 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
                                 </div>
 
                                 {/* Content Section */}
-                                <div className="flex-1 flex flex-col">
+                                <div className="flex-1 flex flex-col flex-grow basis-2/3 2xl:basis-full 2xl:my-8">
+                                    <div className="text-right absolute top-5 right-5 2xl:hidden">
+                                        <div
+                                            className={`text-xs font-medium ${currentTheme.textMuted[theme.mode]} opacity-60 group-hover:opacity-100 transition-opacity duration-300 tracking-wider`}
+                                        >
+                                            {String(index + 1).padStart(2, "0")}
+                                        </div>
+                                    </div>
                                     <h3
-                                        className={`text-xl font-bold ${currentTheme.text[theme.mode]} mb-3 group-hover:${item.iconColor} transition-all duration-300 transform group-hover:translate-x-1 leading-tight`}
+                                        className={`text-xl font-bold ${currentTheme.text[theme.mode]} ${item.hover} transition-all duration-300 transform hover:scale-105 hover:translate-x-1 leading-tight 2xl:mb-2`}
                                     >
                                         {item.title}
                                     </h3>
 
                                     <p
-                                        className={`${currentTheme.textMuted[theme.mode]} text-sm leading-relaxed mb-6 group-hover:text-opacity-90 transition-all duration-300 flex-1`}
+                                        className={`${currentTheme.textMuted[theme.mode]} text-sm leading-relaxed group-hover:text-opacity-90 transition-all duration-300`}
                                     >
                                         {item.description}
                                     </p>
+                                </div>
 
-                                    {/* Footer Section */}
-                                    <div className="mt-auto flex justify-between items-center">
-                                        {/* Enhanced Progress Indicator */}
-                                        <div className="flex gap-2">
-                                            <div
-                                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 group-hover:scale-125 shadow-sm ${
-                                                    item.iconColor === "text-blue-400"
-                                                        ? "bg-blue-400"
-                                                        : item.iconColor === "text-purple-400"
-                                                            ? "bg-purple-400"
-                                                            : item.iconColor === "text-green-400"
-                                                                ? "bg-green-400"
-                                                                : item.iconColor === "text-orange-400"
-                                                                    ? "bg-orange-400"
-                                                                    : item.iconColor === "text-cyan-400"
-                                                                        ? "bg-cyan-400"
-                                                                        : "bg-indigo-400"
-                                                }`}
-                                            ></div>
-                                            <div
-                                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 delay-75 group-hover:scale-125 shadow-sm ${
-                                                    item.iconColor === "text-blue-400"
-                                                        ? "bg-blue-300"
-                                                        : item.iconColor === "text-purple-400"
-                                                            ? "bg-purple-300"
-                                                            : item.iconColor === "text-green-400"
-                                                                ? "bg-green-300"
-                                                                : item.iconColor === "text-orange-400"
-                                                                    ? "bg-orange-300"
-                                                                    : item.iconColor === "text-cyan-400"
-                                                                        ? "bg-cyan-300"
-                                                                        : "bg-indigo-300"
-                                                }`}
-                                            ></div>
-                                            <div
-                                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 delay-150 group-hover:scale-125 shadow-sm ${
-                                                    item.iconColor === "text-blue-400"
-                                                        ? "bg-blue-200"
-                                                        : item.iconColor === "text-purple-400"
-                                                            ? "bg-purple-200"
-                                                            : item.iconColor === "text-green-400"
-                                                                ? "bg-green-200"
-                                                                : item.iconColor === "text-orange-400"
-                                                                    ? "bg-orange-200"
-                                                                    : item.iconColor === "text-cyan-400"
-                                                                        ? "bg-cyan-200"
-                                                                        : "bg-indigo-200"
-                                                }`}
-                                            ></div>
-                                        </div>
-
-                                        {/* Action Hint */}
+                                {/* Footer Section */}
+                                <div className="mt-auto justify-between items-center flex">
+                                    {/* Enhanced Progress Indicator */}
+                                    <div className="gap-2 hidden 2xl:flex">
                                         <div
-                                            className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                            <div className={`text-sm ${item.iconColor} font-medium tracking-wide`}>
-                                                {item.type === "external" ? "Open Link " : "Explore →"}
-                                            </div>
+                                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 group-hover:scale-125 shadow-sm ${
+                                                item.iconColor === "text-blue-400"
+                                                    ? "bg-blue-400"
+                                                    : item.iconColor === "text-purple-400"
+                                                        ? "bg-purple-400"
+                                                        : item.iconColor === "text-green-400"
+                                                            ? "bg-green-400"
+                                                            : item.iconColor === "text-orange-400"
+                                                                ? "bg-orange-400"
+                                                                : item.iconColor === "text-cyan-400"
+                                                                    ? "bg-cyan-400"
+                                                                    : "bg-indigo-400"
+                                            }`}
+                                        ></div>
+                                        <div
+                                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 delay-75 group-hover:scale-125 shadow-sm ${
+                                                item.iconColor === "text-blue-400"
+                                                    ? "bg-blue-300"
+                                                    : item.iconColor === "text-purple-400"
+                                                        ? "bg-purple-300"
+                                                        : item.iconColor === "text-green-400"
+                                                            ? "bg-green-300"
+                                                            : item.iconColor === "text-orange-400"
+                                                                ? "bg-orange-300"
+                                                                : item.iconColor === "text-cyan-400"
+                                                                    ? "bg-cyan-300"
+                                                                    : "bg-indigo-300"
+                                            }`}
+                                        ></div>
+                                        <div
+                                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 delay-150 group-hover:scale-125 shadow-sm ${
+                                                item.iconColor === "text-blue-400"
+                                                    ? "bg-blue-200"
+                                                    : item.iconColor === "text-purple-400"
+                                                        ? "bg-purple-200"
+                                                        : item.iconColor === "text-green-400"
+                                                            ? "bg-green-200"
+                                                            : item.iconColor === "text-orange-400"
+                                                                ? "bg-orange-200"
+                                                                : item.iconColor === "text-cyan-400"
+                                                                    ? "bg-cyan-200"
+                                                                    : "bg-indigo-200"
+                                            }`}
+                                        ></div>
+                                    </div>
+
+                                    {/* Action Hint */}
+                                    <div
+                                        className={`absolute bottom-5 ${item.type === "external" ? "right-10" : "right-5"} opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0`}>
+                                        <div className={`text-sm ${item.iconColor} font-medium tracking-wide`}>
+                                            {item.type === "external" ? "Open Link " : "Explore →"}
                                         </div>
                                     </div>
                                 </div>
