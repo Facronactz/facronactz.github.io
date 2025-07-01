@@ -5,10 +5,12 @@ const config: Config = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./styles/**/*.{js,ts,jsx,tsx,mdx}",
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./views/**/*.{js,ts,jsx,tsx,mdx}",
         "./data/**/*.{js,ts,jsx,tsx,mdx}",
         "./utils/**/*.{js,ts,jsx,tsx,mdx}",
+        "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
         "*.{js,ts,jsx,tsx,mdx}"
     ],
     theme: {

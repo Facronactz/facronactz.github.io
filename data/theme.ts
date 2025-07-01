@@ -1,4 +1,55 @@
-export const colorThemes = {
+export interface ThemeGradients {
+    divider: {
+        dark: string;
+        light: string;
+    };
+    accent: {
+        dark: string;
+        light: string;
+    };
+    text: {
+        dark: string;
+        light: string;
+    };
+}
+
+export interface ThemeVariant {
+    primary: {
+        dark: string;
+        light: string;
+    };
+    accent: {
+        dark: string;
+        light: string;
+    };
+    bg: {
+        dark: string;
+        light: string;
+    };
+    card: {
+        dark: string;
+        light: string;
+    };
+    text: {
+        dark: string;
+        light: string;
+    };
+    textSecondary: {
+        dark: string;
+        light: string;
+    };
+    textMuted: {
+        dark: string;
+        light: string;
+    };
+    gradients: ThemeGradients;
+}
+
+type ThemeName = 'blue' | 'purple' | 'green' | "orange";
+
+export type ColorTheme = ThemeName;
+
+export const colorThemes: Record<ColorTheme, ThemeVariant> = {
     blue: {
         primary: {dark: "from-blue-600 to-cyan-600", light: "from-blue-500 to-cyan-500"},
         accent: {dark: "text-blue-400", light: "text-blue-600"},

@@ -111,7 +111,7 @@ export default function PageGrid({onNavigate, onExternalLink, currentTheme, them
 
     return (
         <section className="w-full max-w-5xl" aria-label="Portfolio Navigation">
-            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 2xl:gap-8">
                 {navigationItems.map((item, index) => {
                     const Icon = item.icon
                     return (
