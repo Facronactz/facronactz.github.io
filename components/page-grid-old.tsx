@@ -2,12 +2,14 @@
 
 import {Award, Briefcase, ExternalLink, FileText, FolderOpen, Globe, GraduationCap} from "lucide-react"
 import {useEffect, useRef} from "react"
+import {Theme, ThemeVariant} from "@/types/theme"
 
 interface PageGridProps {
     onNavigate: (page: string) => void
     onExternalLink: (url: string) => void
-    currentTheme: any
-    theme: any
+    currentTheme: ThemeVariant
+    theme: Theme
+    resumeUrl: string
 }
 
 const navigationItems = [

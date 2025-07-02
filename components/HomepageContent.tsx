@@ -1,11 +1,11 @@
 import React from "react";
 import PageGrid from "@/components/page-grid-old";
-import { Theme } from "@/types/theme";
+import {Theme, ThemeVariant} from "@/types/theme";
 
 interface HomepageContentProps {
     handleNavigate: (page: string) => void;
     handleExternalLink: (url: string) => void;
-    currentTheme: any; // TODO: Type this properly
+    currentTheme: ThemeVariant;
     theme: Theme;
 }
 
@@ -23,6 +23,7 @@ const HomepageContent: React.FC<HomepageContentProps> = ({
                     onExternalLink={handleExternalLink}
                     currentTheme={currentTheme}
                     theme={theme}
+                    resumeUrl="https://facronactz.vercel.app/"
                 />
             </div>
 

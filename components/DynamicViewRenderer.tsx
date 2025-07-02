@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Theme } from "@/types/theme";
+import {Theme, ThemeVariant} from "@/types/theme";
 
 const StudiesView = lazy(() => import("../views/studies-view"));
 const ExperiencesView = lazy(() => import("../views/experiences-view"));
@@ -10,7 +10,7 @@ const OnlineProfilesView = lazy(() => import("../views/online-profiles-view"));
 interface DynamicViewRendererProps {
     currentPage: string | null;
     handleBack: () => void;
-    currentTheme: any; // TODO: Type this properly
+    currentTheme: ThemeVariant;
     theme: Theme;
 }
 

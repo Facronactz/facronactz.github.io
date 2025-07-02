@@ -1,5 +1,6 @@
 import React, {RefObject} from "react";
 import {Theme} from "@/types/theme";
+import Particles from "@/components/bits/particle";
 
 interface BackgroundElementsProps {
     particleContainerRef: RefObject<HTMLDivElement | null>;
@@ -32,6 +33,20 @@ const BackgroundElements: React.FC<BackgroundElementsProps> = ({particleContaine
             <div ref={particleContainerRef} className="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
             {/* Enhanced Floating Elements */}
+            <div className="absolute w-full h-full">
+                <Particles
+                    sizeRandomness={1}
+                    particleColors={['#ffffff', '#ffffff']}
+                    particleCount={200}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleBaseSize={100}
+                    moveParticlesOnHover={false}
+                    alphaParticles={true}
+                    disableRotation={false}
+                />
+            </div>
+
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div
                     className={`floating-element absolute top-20 left-10 w-2 h-2 ${theme.colorTheme === "blue" ? "bg-blue-400" : theme.colorTheme === "purple" ? "bg-purple-400" : theme.colorTheme === "green" ? "bg-green-400" : "bg-orange-400"} rounded-full opacity-60`}

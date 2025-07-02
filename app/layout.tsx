@@ -3,6 +3,7 @@ import './globals.css'
 import '../styles/animations.css'
 import '../styles/utilities.css'
 import {ReactNode} from "react";
+import {ThemeProvider} from "@/components/theme-provider";
 
 export const metadata: Metadata = {
     title: "Facronactz's Landing Page",
@@ -16,11 +17,13 @@ export default function RootLayout({
     children: ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
         <body>
-        <div className="relative z-10">
-            {children}
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <div className="relative z-10">
+                {children}
+            </div>
+        </ThemeProvider>
         </body>
         </html>
     )

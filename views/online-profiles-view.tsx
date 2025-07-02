@@ -1,7 +1,9 @@
 "use client"
 
-import {ArrowLeft, ExternalLink, Github, Globe, Instagram, Linkedin, Twitter} from "lucide-react"
+import {ArrowLeft, ExternalLink, Github, Globe, Instagram, Linkedin, Twitter, LucideProps} from "lucide-react"
 import {Button} from "@/components/ui/button"
+import {profilesData} from "@/data/online-profiles";
+import React from "react";
 
 interface OnlineProfilesViewProps {
     onBack: () => void
@@ -9,80 +11,14 @@ interface OnlineProfilesViewProps {
     theme: any
 }
 
-const profilesData = [
-    {
-        platform: "GitHub",
-        username: "@facronactz",
-        url: "https://github.com/facronactz",
-        description: "Open source projects and code repositories",
-        icon: Github,
-        color: "text-gray-400",
-        bgColor: "from-gray-500/20 to-gray-600/20",
-        borderColor: "border-gray-500/20",
-        followers: "1.2K followers",
-        stats: "150+ repositories",
-    },
-    {
-        platform: "LinkedIn",
-        username: "Farro Axza Febsinatra Sofi'ie",
-        url: "https://linkedin.com/in/facronactz",
-        description: "Professional network and career updates",
-        icon: Linkedin,
-        color: "text-blue-400",
-        bgColor: "from-blue-500/20 to-blue-600/20",
-        borderColor: "border-blue-500/20",
-        followers: "5K+ connections",
-        stats: "Software Engineer",
-    },
-    {
-        platform: "Twitter",
-        username: "@facronactzdev",
-        url: "https://twitter.com/facronactzdev",
-        description: "Tech insights and industry discussions",
-        icon: Twitter,
-        color: "text-sky-400",
-        bgColor: "from-sky-500/20 to-sky-600/20",
-        borderColor: "border-sky-500/20",
-        followers: "2.5K followers",
-        stats: "Tech enthusiast",
-    },
-    {
-        platform: "Portfolio Website",
-        username: "facronactz.dev",
-        url: "https://facronactz.dev",
-        description: "Complete portfolio and blog",
-        icon: Globe,
-        color: "text-green-400",
-        bgColor: "from-green-500/20 to-green-600/20",
-        borderColor: "border-green-500/20",
-        followers: "Personal website",
-        stats: "Full portfolio",
-    },
-    {
-        platform: "Instagram",
-        username: "@facronactz.codes",
-        url: "https://instagram.com/facronactz.codes",
-        description: "Behind the scenes and coding journey",
-        icon: Instagram,
-        color: "text-pink-400",
-        bgColor: "from-pink-500/20 to-pink-600/20",
-        borderColor: "border-pink-500/20",
-        followers: "800 followers",
-        stats: "Coding lifestyle",
-    },
-    {
-        platform: "Dev.to",
-        username: "@facronactz",
-        url: "https://dev.to/facronactz",
-        description: "Technical articles and tutorials",
-        icon: Globe,
-        color: "text-purple-400",
-        bgColor: "from-purple-500/20 to-purple-600/20",
-        borderColor: "border-purple-500/20",
-        followers: "1K+ followers",
-        stats: "50+ articles",
-    },
-]
+const iconComponents: { [key: string]: React.ComponentType<LucideProps> } = {
+    Github,
+    Linkedin,
+    Twitter,
+    Globe,
+    Instagram,
+};
+
 
 export default function OnlineProfilesView({onBack, currentTheme, theme}: OnlineProfilesViewProps) {
     const handleProfileClick = (url: string, platform: string) => {
@@ -109,7 +45,7 @@ export default function OnlineProfilesView({onBack, currentTheme, theme}: Online
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {profilesData.map((profile, index) => {
-                    const Icon = profile.icon
+                    const Icon = iconComponents[profile.icon];
                     return (
                         <article
                             key={index}
@@ -142,7 +78,7 @@ export default function OnlineProfilesView({onBack, currentTheme, theme}: Online
                                 <div className="flex items-start gap-4 mb-4">
                                     <div
                                         className={`p-3 rounded-xl bg-gradient-to-br ${profile.bgColor} border ${profile.borderColor}`}>
-                                        <Icon className={`w-6 h-6 ${profile.color}`} aria-hidden="true"/>
+                                        {Icon && <Icon className={`w-6 h-6 ${profile.color}`} aria-hidden="true"/>}
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <h2

@@ -1,11 +1,11 @@
 import React from "react";
 import { Moon, Palette, Settings, Sun } from "lucide-react";
 import { colorThemes } from "@/data/theme";
-import { ColorTheme, Theme } from "@/types/theme";
+import { ColorTheme, Theme, ThemeVariant } from "@/types/theme";
 
 interface ThemeControlsProps {
     theme: Theme;
-    currentTheme: any; // TODO: Type this properly
+    currentTheme: ThemeVariant;
     changeTheme: (newTheme: Partial<Theme>) => void;
     showThemePanel: boolean;
     setShowThemePanel: (show: boolean) => void;

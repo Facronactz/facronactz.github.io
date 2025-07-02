@@ -282,6 +282,7 @@ export default function PortfolioIntroNew() {
                                 onExternalLink={handleExternalLink}
                                 currentTheme={currentTheme}
                                 theme={theme}
+                                resumeUrl="https://facronactz.vercel.app/"
                             />
 
                             {/* Enhanced Stats */}

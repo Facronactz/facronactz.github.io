@@ -1,9 +1,9 @@
 import React from "react";
-import { Theme } from "@/types/theme";
+import {Theme, ThemeVariant} from "@/types/theme";
 
 interface FooterSectionProps {
     currentPage: string | null;
-    currentTheme: any; // TODO: Type this properly
+    currentTheme: ThemeVariant;
     handleNavigate: (page: string) => void;
     theme: Theme;
 }

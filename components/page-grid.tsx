@@ -4,11 +4,14 @@ import {Award, Briefcase, ExternalLink, FileText, FolderOpen, Globe, GraduationC
 import {useEffect, useRef} from "react"
 import {getProgressIndicatorClasses} from "@/utils/theme-utils"
 
+import {Theme, ThemeVariant} from "@/types/theme"
+
 interface PageGridProps {
     onNavigate: (page: string) => void
     onExternalLink: (url: string) => void
-    currentTheme: any
-    theme: any
+    currentTheme: ThemeVariant
+    theme: Theme
+    resumeUrl: string
 }
 
 // Define types for navigation items
@@ -121,7 +124,7 @@ const navigationItems: NavigationItem[] = [
         description: 'Download or view complete CV',
         icon: FileText,
         type: 'external',
-        url: 'https://your-resume-website.com/cv.pdf',
+        url: "https://facronactz.vercel.app/",
         ...gradientClasses.indigo,
     },
 ];
