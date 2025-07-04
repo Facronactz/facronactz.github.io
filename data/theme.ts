@@ -13,6 +13,14 @@ export interface ThemeGradients {
     };
 }
 
+export interface ThemeBackground {
+    floatingElementColor1: string;
+    floatingElementColor2: string;
+    floatingElementColor3: string;
+    floatingElementColor4: string;
+    geometricShapeColor: string;
+}
+
 export interface ThemeVariant {
     primary: {
         dark: string;
@@ -43,6 +51,8 @@ export interface ThemeVariant {
         light: string;
     };
     gradients: ThemeGradients;
+    background: ThemeBackground;
+    hex: string;
 }
 
 type ThemeName = 'blue' | 'purple' | 'green' | "orange";
@@ -71,7 +81,15 @@ export const colorThemes: Record<ColorTheme, ThemeVariant> = {
                 dark: "from-white via-slate-200 to-slate-400",
                 light: "from-slate-900 via-slate-700 to-slate-500"
             }
-        }
+        },
+        background: {
+            floatingElementColor1: "bg-blue-400",
+            floatingElementColor2: "bg-cyan-400",
+            floatingElementColor3: "bg-blue-300",
+            floatingElementColor4: "bg-cyan-300",
+            geometricShapeColor: "border-blue-500/10"
+        },
+        hex: "#3b82f6"
     },
     purple: {
         primary: {dark: "from-purple-600 to-pink-600", light: "from-purple-500 to-pink-500"},
@@ -94,7 +112,15 @@ export const colorThemes: Record<ColorTheme, ThemeVariant> = {
                 dark: "from-white via-slate-200 to-slate-400",
                 light: "from-slate-900 via-slate-700 to-slate-500"
             }
-        }
+        },
+        background: {
+            floatingElementColor1: "bg-purple-400",
+            floatingElementColor2: "bg-pink-400",
+            floatingElementColor3: "bg-purple-300",
+            floatingElementColor4: "bg-pink-300",
+            geometricShapeColor: "border-purple-500/10"
+        },
+        hex: "#a855f7"
     },
     green: {
         primary: {dark: "from-green-600 to-emerald-600", light: "from-green-500 to-emerald-500"},
@@ -117,7 +143,15 @@ export const colorThemes: Record<ColorTheme, ThemeVariant> = {
                 dark: "from-white via-slate-200 to-slate-400",
                 light: "from-slate-900 via-slate-700 to-slate-500"
             }
-        }
+        },
+        background: {
+            floatingElementColor1: "bg-green-400",
+            floatingElementColor2: "bg-emerald-400",
+            floatingElementColor3: "bg-green-300",
+            floatingElementColor4: "bg-emerald-300",
+            geometricShapeColor: "border-green-500/10"
+        },
+        hex: "#22c55e"
     },
     orange: {
         primary: {dark: "from-orange-600 to-red-600", light: "from-orange-500 to-red-500"},
@@ -140,6 +174,14 @@ export const colorThemes: Record<ColorTheme, ThemeVariant> = {
                 dark: "from-white via-slate-200 to-slate-400",
                 light: "from-slate-900 via-slate-700 to-slate-500"
             }
-        }
+        },
+        background: {
+            floatingElementColor1: "bg-orange-400",
+            floatingElementColor2: "bg-red-400",
+            floatingElementColor3: "bg-orange-300",
+            floatingElementColor4: "bg-red-300",
+            geometricShapeColor: "border-orange-500/10"
+        },
+        hex: "#f97316"
     },
 }
