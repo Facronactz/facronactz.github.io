@@ -106,6 +106,8 @@ const Particles: React.FC<ParticlesProps> = ({
     const containerRef = useRef<HTMLDivElement>(null);
     const mouseRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
 
+    const colorDependency = (particleColors || []).join(',');
+
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
@@ -233,6 +235,7 @@ const Particles: React.FC<ParticlesProps> = ({
         sizeRandomness,
         cameraDistance,
         disableRotation,
+        colorDependency,
     ]);
 
     return (
