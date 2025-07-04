@@ -19,7 +19,7 @@ const BackgroundElements: React.FC<BackgroundElementsProps> = ({particleContaine
         geometricShapeColor
     } = currentTheme.background;
     return (
-        <>
+        <div className="fixed top-0 left-0 w-full h-full z-10">
             {/* Enhanced Background Elements */}
             <div className="absolute inset-0 opacity-30">
                 <div className="grid-pattern"></div>
@@ -107,7 +107,7 @@ const BackgroundElements: React.FC<BackgroundElementsProps> = ({particleContaine
                     style={{animationDelay: "3s"}}
                 ></div>
             </div>
-        </>
+        </div>
     );
 };
 
