@@ -43,16 +43,15 @@ const BackgroundElements: React.FC<BackgroundElementsProps> = ({particleContaine
             <div ref={particleContainerRef} className="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
             {/* Enhanced Floating Elements */}
-            <div className="absolute w-full h-full">
+            <div id="particle-container" className="absolute w-full h-full z-50">
                 <Particles
                     sizeRandomness={6}
                     particleColors={[particleColor]}
                     particleCount={400}
-                    particleSpread={10}
+                    particleSpread={2}
                     speed={0.12}
                     particleBaseSize={50}
                     moveParticlesOnHover={false}
-                    alphaParticles={true}
                     disableRotation={false}
                 />
             </div>

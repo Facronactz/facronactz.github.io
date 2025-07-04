@@ -8,7 +8,6 @@ interface ParticlesProps {
     particleColors?: string[];
     moveParticlesOnHover?: boolean;
     particleHoverFactor?: number;
-    alphaParticles?: boolean;
     particleBaseSize?: number;
     sizeRandomness?: number;
     cameraDistance?: number;
@@ -60,32 +59,32 @@ const vertex = /* glsl */ `
     mPos.z += sin(t * random.w + 6.28 * random.y) * mix(0.1, 1.5, random.z);
     
     vec4 mvPos = viewMatrix * mPos;
-    gl_PointSize = (uBaseSize * (1.0 + uSizeRandomness * (random.x - 0.5))) / length(mvPos.xyz);
+    float size = uBaseSize * max(0.0, 1.0 + uSizeRandomness * (random.x - 0.5));
+    gl_PointSize = size / length(mvPos.xyz);
     gl_Position = projectionMatrix * mvPos;
   }
 `;
 
 const fragment = /* glsl */ `
   precision highp float;
-  
+
   uniform float uTime;
-  uniform float uAlphaParticles;
   varying vec4 vRandom;
   varying vec3 vColor;
-  
+
   void main() {
     vec2 uv = gl_PointCoord.xy;
     float d = length(uv - vec2(0.5));
-    
-    if(uAlphaParticles < 0.5) {
-      if(d > 0.5) {
-        discard;
-      }
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), 1.0);
-    } else {
-      float circle = smoothstep(0.5, 0.4, d) * 0.8;
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
-    }
+
+    if (d > 0.9) discard;
+
+    // Create a soft, glowing effect that fades out from the center
+    float alpha = smoothstep(0.5, 0.0, d);
+
+    // Add a subtle twinkle effect that doesn't let the star disappear completely
+    float twinkle = 0.6 + 0.4 * sin(uTime * 3.0 * vRandom.x + vRandom.y * 6.28);
+
+    gl_FragColor = vec4(vColor, alpha * twinkle);
   }
 `;
 
@@ -96,7 +95,6 @@ const Particles: React.FC<ParticlesProps> = ({
                                                  particleColors,
                                                  moveParticlesOnHover = false,
                                                  particleHoverFactor = 1,
-                                                 alphaParticles = false,
                                                  particleBaseSize = 100,
                                                  sizeRandomness = 1,
                                                  cameraDistance = 20,
@@ -175,7 +173,6 @@ const Particles: React.FC<ParticlesProps> = ({
                 uSpread: {value: particleSpread},
                 uBaseSize: {value: particleBaseSize},
                 uSizeRandomness: {value: sizeRandomness},
-                uAlphaParticles: {value: alphaParticles ? 1 : 0},
             },
             transparent: true,
             depthTest: false,
@@ -230,7 +227,6 @@ const Particles: React.FC<ParticlesProps> = ({
         speed,
         moveParticlesOnHover,
         particleHoverFactor,
-        alphaParticles,
         particleBaseSize,
         sizeRandomness,
         cameraDistance,
