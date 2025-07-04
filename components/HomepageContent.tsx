@@ -1,6 +1,7 @@
 import React from "react";
 import PageGrid from "@/components/page-grid-old";
 import {Theme, ThemeVariant} from "@/types/theme";
+import CountUp from "@/components/bits/CountUp";
 
 interface HomepageContentProps {
     handleNavigate: (page: string) => void;
@@ -10,11 +11,11 @@ interface HomepageContentProps {
 }
 
 const HomepageContent: React.FC<HomepageContentProps> = ({
-    handleNavigate,
-    handleExternalLink,
-    currentTheme,
-    theme,
-}) => {
+                                                             handleNavigate,
+                                                             handleExternalLink,
+                                                             currentTheme,
+                                                             theme,
+                                                         }) => {
     return (
         <div className="flex flex-col items-center flex-1">
             <div className="my-6">
@@ -30,29 +31,51 @@ const HomepageContent: React.FC<HomepageContentProps> = ({
             {/* Enhanced Stats */}
             <div className="flex flex-wrap justify-center gap-6 2xl:gap-8 my-auto">
                 <div className="text-center stat-counter">
-                    <div
-                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>5+
+                    <div className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>
+                        <CountUp
+                            from={0}
+                            to={20}
+                            separator=","
+                            direction="up"
+                            delay={1}
+                            duration={2}
+                            textEnd="+"
+                        />
                     </div>
-                    <div
-                        className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Projects
-                        Completed
-                    </div>
-                </div>
-                <div className="text-center stat-counter" style={{ animationDelay: "0.2s" }}>
-                    <div
-                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>50+
-                    </div>
-                    <div
-                        className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Certificates
-                        Earned
+                    <div className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>
+                        Projects Completed
                     </div>
                 </div>
-                <div className="text-center stat-counter" style={{ animationDelay: "0.4s" }}>
-                    <div
-                        className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>100+
+                <div className="text-center stat-counter" style={{animationDelay: "0.2s"}}>
+                    <div className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>
+                        <CountUp
+                            from={0}
+                            to={80}
+                            separator=","
+                            direction="up"
+                            delay={1}
+                            duration={2}
+                            textEnd="+"
+                        />
                     </div>
-                    <div className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>Tools
-                        Mastered
+                    <div className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>
+                        Certificates Earned
+                    </div>
+                </div>
+                <div className="text-center stat-counter" style={{animationDelay: "0.4s"}}>
+                    <div className={`text-2xl 2xl:text-3xl font-bold ${currentTheme.text[theme.mode]} mb-1`}>
+                        <CountUp
+                            from={0}
+                            to={50}
+                            separator=","
+                            direction="up"
+                            delay={1}
+                            duration={2}
+                            textEnd="+"
+                        />
+                    </div>
+                    <div className={`text-xs 2xl:text-sm ${currentTheme.textMuted[theme.mode]}`}>
+                        Tools Mastered
                     </div>
                 </div>
             </div>
