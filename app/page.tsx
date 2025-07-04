@@ -11,6 +11,7 @@ import HeaderSection from "@/components/HeaderSection";
 import HomepageContent from "@/components/HomepageContent";
 import DynamicViewRenderer from "@/components/DynamicViewRenderer";
 import FooterSection from "@/components/FooterSection";
+import ClickSpark from "@/components/bits/ClickSpark";
 
 export default function PortfolioIntro() {
     const [currentRole, setCurrentRole] = useState(0);
@@ -32,62 +33,71 @@ export default function PortfolioIntro() {
     const currentTheme = colorThemes[theme.colorTheme];
 
     return (
-        <div
-            className={`transition-all duration-500 ease-in-out ${isTransitioning ? "opacity-50 scale-95" : "opacity-100 scale-100"} 
-        ${currentPage ? "min-h-screen" : "h-screen lg:overflow-hidden"} overflow-x-hidden overflow-y-scroll`}
+        <ClickSpark
+            sparkColor='#fff'
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
         >
             <div
-                className={`bg-gradient-to-br ${currentTheme.bg[theme.mode]} ${currentTheme.text[theme.mode]} relative transition-all duration-700 min-h-screen overflow-auto overflow-x-hidden`}
+                className={`transition-all duration-500 ease-in-out ${isTransitioning ? "opacity-50 scale-95" : "opacity-100 scale-100"}
+        ${currentPage ? "min-h-screen" : "h-screen lg:overflow-hidden"} overflow-x-hidden overflow-y-scroll`}
             >
-                <BackgroundElements particleContainerRef={particleContainerRef} theme={theme}/>
-                <ThemeControls
-                    theme={theme}
-                    currentTheme={currentTheme}
-                    changeTheme={changeTheme}
-                    showThemePanel={showThemePanel}
-                    setShowThemePanel={setShowThemePanel}
-                />
-
                 <div
-                    className={`relative z-10 w-full h-screen max-w-6xl mx-auto px-6 
-            ${currentPage ? "pt-6" : "pt-8 2xl:pt-12"} 
+                    className={`bg-gradient-to-br ${currentTheme.bg[theme.mode]} ${currentTheme.text[theme.mode]} relative transition-all duration-700 min-h-screen overflow-auto overflow-x-hidden`}
+                >
+                    <BackgroundElements particleContainerRef={particleContainerRef} theme={theme}
+                                        currentTheme={currentTheme}/>
+                    <ThemeControls
+                        theme={theme}
+                        currentTheme={currentTheme}
+                        changeTheme={changeTheme}
+                        showThemePanel={showThemePanel}
+                        setShowThemePanel={setShowThemePanel}
+                    />
+
+                    <div
+                        className={`relative z-10 w-full h-screen max-w-6xl mx-auto px-6
+            ${currentPage ? "pt-6" : "pt-8 2xl:pt-12"}
             ${pageTransition ? "page-transition-exit-active" : "page-transition-enter-active"}
             flex flex-col`}
-                >
-                    <HeaderSection
-                        currentPage={currentPage}
-                        currentTheme={{...currentTheme, mode: theme.mode}}
-                        roles={roles}
-                        currentRole={currentRole}
-                    />
-
-                    {!currentPage && (
-                        <HomepageContent
-                            handleNavigate={handleNavigate}
-                            handleExternalLink={handleExternalLink}
-                            currentTheme={currentTheme}
-                            theme={theme}
-                        />
-                    )}
-
-                    {currentPage && (
-                        <DynamicViewRenderer
+                    >
+                        <HeaderSection
                             currentPage={currentPage}
-                            handleBack={handleBack}
+                            currentTheme={{...currentTheme, mode: theme.mode}}
+                            roles={roles}
+                            currentRole={currentRole}
+                        />
+
+                        {!currentPage && (
+                            <HomepageContent
+                                handleNavigate={handleNavigate}
+                                handleExternalLink={handleExternalLink}
+                                currentTheme={currentTheme}
+                                theme={theme}
+                            />
+                        )}
+
+                        {currentPage && (
+                            <DynamicViewRenderer
+                                currentPage={currentPage}
+                                handleBack={handleBack}
+                                currentTheme={currentTheme}
+                                theme={theme}
+                            />
+                        )}
+
+                        <FooterSection
+                            currentPage={currentPage}
                             currentTheme={currentTheme}
+                            handleNavigate={handleNavigate}
                             theme={theme}
                         />
-                    )}
-
-                    <FooterSection
-                        currentPage={currentPage}
-                        currentTheme={currentTheme}
-                        handleNavigate={handleNavigate}
-                        theme={theme}
-                    />
+                    </div>
                 </div>
             </div>
-        </div>
+        </ClickSpark>
     );
 }
 
