@@ -12,12 +12,11 @@ import HomepageContent from "@/components/HomepageContent";
 import DynamicViewRenderer from "@/components/DynamicViewRenderer";
 import FooterSection from "@/components/FooterSection";
 import ClickSpark from "@/components/bits/ClickSpark";
+import {roles} from "@/data/biodata";
 
 export default function PortfolioIntro() {
     const [currentRole, setCurrentRole] = useState(0);
     const particleContainerRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
-
-    const roles = ["Full Stack Developer", "Software Engineer", "Tech Innovator", "Problem Solver"];
 
     const {theme, changeTheme, isTransitioning, showThemePanel, setShowThemePanel} = useThemeManager();
     const {currentPage, pageTransition, handleNavigate, handleBack, handleExternalLink} = usePageNavigation();
