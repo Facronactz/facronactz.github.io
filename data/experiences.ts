@@ -8,7 +8,20 @@ export const experienceData = [
         achievements: [
             "Responsible for managing the core banking system of a leading bank in Indonesia.",
             "Provide technical support and troubleshooting services to clients on a daily basis.",
-            "Collaborate with other departments to ensure the smooth operation of the IT services.",
+            "Implement and maintain IT solutions to ensure the stability and security of the core banking system.",
+        ],
+        technologies: [],
+    },
+    {
+        title: "Facilitator, AI Front-end Development Learning Path",
+        company: "IDCamp 2025 by Indosat - Dicoding",
+        location: "Indonesia",
+        period: "Jan 2026 - Mar 2026",
+        type: "Contract",
+        achievements: [
+            "Mentored 20+ students in AI front-end development.",
+            "Facilitated over 20 learning and development sessions to enhance student outcomes.",
+            "Managing the learning path and providing support to students throughout the program.",
         ],
         technologies: [],
     },
@@ -17,7 +30,7 @@ export const experienceData = [
         company: "Coding Camp 2025 by DBS Foundation - Dicoding",
         location: "Indonesia",
         period: "Jan 2025 - May 2025",
-        type: "Full-time",
+        type: "Contract",
         achievements: [
             "Mentored 20+ students in front-end web and back-end development.",
             "Facilitated over 20 learning and development sessions to enhance student outcomes.",
